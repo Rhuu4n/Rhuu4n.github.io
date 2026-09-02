@@ -1,314 +1,46 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Currículo - Rhuan de Padua Oliveira</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-    <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            font-family:'Segoe UI', sans-serif;
-        }
+    <title>Aula 02 - WebAR com MindAR</title>
 
-        body{
-            background:#f4f6f9;
-            color:#333;
-            line-height:1.6;
-        }
+    <!-- Biblioteca A-Frame: criação da cena 3D -->
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
 
-        .container{
-            max-width:1200px;
-            margin:auto;
-            padding:30px;
-        }
-
-        .header{
-            background:#1e293b;
-            color:white;
-            padding:40px;
-            border-radius:15px;
-            margin-bottom:25px;
-        }
-
-        .header h1{
-            font-size:2.5rem;
-        }
-
-        .header p{
-            margin-top:10px;
-            opacity:0.9;
-        }
-
-        .contact{
-            margin-top:20px;
-            display:flex;
-            flex-wrap:wrap;
-            gap:20px;
-        }
-
-        .contact span{
-            font-size:0.95rem;
-        }
-
-        .section{
-            background:white;
-            padding:25px;
-            border-radius:15px;
-            margin-bottom:20px;
-            box-shadow:0 3px 10px rgba(0,0,0,.08);
-        }
-
-        .section h2{
-            color:#0f172a;
-            margin-bottom:15px;
-            border-left:5px solid #2563eb;
-            padding-left:10px;
-        }
-
-        .timeline-item{
-            margin-bottom:25px;
-        }
-
-        .timeline-item h3{
-            color:#1e40af;
-            margin-bottom:5px;
-        }
-
-        .timeline-item .date{
-            color:#64748b;
-            font-size:0.9rem;
-            margin-bottom:10px;
-        }
-
-        ul{
-            padding-left:20px;
-        }
-
-        li{
-            margin-bottom:5px;
-        }
-
-        .skills{
-            display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-            gap:20px;
-        }
-
-        .skill-box{
-            background:#f8fafc;
-            padding:20px;
-            border-radius:10px;
-        }
-
-        .skill-box h3{
-            margin-bottom:15px;
-            color:#1e293b;
-        }
-
-        .tags{
-            display:flex;
-            flex-wrap:wrap;
-            gap:10px;
-        }
-
-        .tag{
-            background:#2563eb;
-            color:white;
-            padding:8px 12px;
-            border-radius:20px;
-            font-size:0.9rem;
-        }
-
-        footer{
-            text-align:center;
-            padding:20px;
-            color:#64748b;
-        }
-
-        @media(max-width:768px){
-            .header h1{
-                font-size:2rem;
-            }
-        }
-    </style>
+    <!-- Biblioteca MindAR: reconhecimento e rastreamento da imagem -->
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
 </head>
+
 <body>
 
-<div class="container">
+    <a-scene
+        mindar-image="imageTargetSrc: https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/card.mind;&quot;
+        vr-mode-ui="enabled: false"
+        device-orientation-permission-ui="enabled: false">
 
-    <header class="header">
-        <h1>Rhuan de Padua Oliveira</h1>
+        <!-- Câmera do dispositivo -->
+        <a-camera
+            position="0 0 0"
+            look-controls="enabled: false">
+        </a-camera>
 
-        <p>
-            Estudante de Análise e Desenvolvimento de Sistemas com experiência em
-            manutenção industrial, eletricidade, informática e desenvolvimento de software.
-            Possuo conhecimentos em Python, C#, JavaScript, Node.js, Angular e banco de dados,
-            buscando oportunidade de estágio na área de tecnologia para ampliar minhas
-            competências e contribuir com soluções inovadoras.
-        </p>
+        <!-- Objeto associado à imagem que será reconhecida -->
+        <a-entity mindar-image-target="targetIndex: 0">
 
-        <div class="contact">
-            <span>📱 (16) 97404-5374</span>
-            <span>📧 Rhuanpadua@outlook.com</span>
-            <span>📍 São Carlos - SP</span>
-            <span>🚗 CNH A/B</span>
-        </div>
-    </header>
+            <!-- Cubo virtual -->
+            <a-box
+                position="0 0 0.25"
+                rotation="0 0 0"
+                scale="0.5 0.5 0.5">
+            </a-box>
 
-    <section class="section">
-        <h2>Formação Acadêmica</h2>
+        </a-entity>
 
-        <div class="timeline-item">
-            <h3>Tecnólogo em Análise e Desenvolvimento de Sistemas - SENAI</h3>
-            <p class="date">Cursando</p>
-            <ul>
-                <li>Desenvolvimento de software.</li>
-                <li>Python, C# e JavaScript.</li>
-                <li>Banco de dados e modelagem de sistemas.</li>
-                <li>Desenvolvimento web e metodologias ágeis.</li>
-            </ul>
-        </div>
-
-        <div class="timeline-item">
-            <h3>Técnico em Informática - SENAC</h3>
-            <p class="date">Concluído em 2025</p>
-            <ul>
-                <li>Manutenção de computadores.</li>
-                <li>Redes de computadores.</li>
-                <li>Suporte técnico.</li>
-                <li>Fundamentos de programação.</li>
-            </ul>
-        </div>
-
-        <div class="timeline-item">
-            <h3>Eletricista de Manutenção Eletroeletrônica - SENAI</h3>
-            <p class="date">Concluído em 2025</p>
-            <ul>
-                <li>Manutenção elétrica industrial.</li>
-                <li>Automação e comandos elétricos.</li>
-                <li>Leitura de diagramas elétricos.</li>
-                <li>Diagnóstico de falhas.</li>
-            </ul>
-        </div>
-
-        <div class="timeline-item">
-            <h3>Curso de Arduino - SENAI</h3>
-            <p class="date">Concluído em 2022</p>
-            <ul>
-                <li>Programação de microcontroladores.</li>
-                <li>Integração de sensores e atuadores.</li>
-                <li>Desenvolvimento de protótipos eletrônicos.</li>
-            </ul>
-        </div>
-
-        <div class="timeline-item">
-            <h3>Mecânico de Manutenção - SENAI</h3>
-            <p class="date">Concluído em 2020</p>
-            <ul>
-                <li>Manutenção preventiva e corretiva.</li>
-                <li>Metrologia.</li>
-                <li>Leitura de desenhos técnicos.</li>
-                <li>Segurança industrial.</li>
-            </ul>
-        </div>
-
-    </section>
-
-    <section class="section">
-        <h2>Experiência Profissional</h2>
-
-        <div class="timeline-item">
-            <h3>Tecumseh do Brasil - Jovem Aprendiz Mecânico de Manutenção</h3>
-            <p class="date">Jan/2018 - Dez/2020</p>
-
-            <ul>
-                <li>Auxílio em manutenção preventiva e corretiva.</li>
-                <li>Inspeção de equipamentos industriais.</li>
-                <li>Leitura de documentação técnica.</li>
-                <li>Organização de ferramentas e processos.</li>
-            </ul>
-        </div>
-
-        <div class="timeline-item">
-            <h3>Tecumseh do Brasil - Jovem Aprendiz Eletricista de Manutenção Eletroeletrônica</h3>
-            <p class="date">Jan/2023 - Dez/2025</p>
-
-            <ul>
-                <li>Suporte em manutenção elétrica industrial.</li>
-                <li>Interpretação de diagramas elétricos.</li>
-                <li>Identificação de falhas em equipamentos.</li>
-                <li>Apoio em sistemas de automação.</li>
-                <li>Aplicação de normas de segurança.</li>
-            </ul>
-        </div>
-
-    </section>
-
-    <section class="section">
-        <h2>Projetos de Tecnologia</h2>
-
-        <ul>
-            <li>Desenvolvimento de APIs REST utilizando Node.js e Express.</li>
-            <li>Integração de banco de dados MongoDB.</li>
-            <li>Desenvolvimento de aplicações utilizando Angular.</li>
-            <li>Criação de interfaces responsivas com HTML, CSS e JavaScript.</li>
-            <li>Projetos acadêmicos de programação orientada a objetos.</li>
-            <li>Projetos envolvendo Arduino e automação.</li>
-        </ul>
-    </section>
-
-    <section class="section">
-        <h2>Habilidades</h2>
-
-        <div class="skills">
-
-            <div class="skill-box">
-                <h3>Hard Skills</h3>
-
-                <div class="tags">
-                    <span class="tag">Python</span>
-                    <span class="tag">C#</span>
-                    <span class="tag">JavaScript</span>
-                    <span class="tag">Node.js</span>
-                    <span class="tag">Angular</span>
-                    <span class="tag">HTML5</span>
-                    <span class="tag">CSS3</span>
-                    <span class="tag">MongoDB</span>
-                    <span class="tag">Git</span>
-                    <span class="tag">Banco de Dados</span>
-                    <span class="tag">Arduino</span>
-                    <span class="tag">Eletrônica</span>
-                    <span class="tag">Elétrica Industrial</span>
-                    <span class="tag">Excel</span>
-                </div>
-            </div>
-
-            <div class="skill-box">
-                <h3>Soft Skills</h3>
-
-                <div class="tags">
-                    <span class="tag">Trabalho em Equipe</span>
-                    <span class="tag">Comunicação</span>
-                    <span class="tag">Proatividade</span>
-                    <span class="tag">Organização</span>
-                    <span class="tag">Adaptabilidade</span>
-                    <span class="tag">Aprendizado Rápido</span>
-                    <span class="tag">Resolução de Problemas</span>
-                    <span class="tag">Pensamento Analítico</span>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <footer>
-        © 2026 - Currículo Profissional de Rhuan de Padua Oliveira
-    </footer>
-
-</div>
+    </a-scene>
 
 </body>
 </html>
